@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buku Album Romantis</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f3f3f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .album-container {
+            width: 60%;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border-radius: 8px;
+            background-color: white;
+            position: relative;
+        }
+
+        .page {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .page img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .page p {
+            font-size: 18px;
+            color: #333;
+            text-align: center;
+            margin: 0;
+        }
+
+        .navigation-buttons {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:disabled {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="album-container">
+        <!-- Halaman 1 -->
+        <div class="page" id="page1">
+            <img src="https://i.ibb.co.com/c3mvhqF/Gambar-Whats-App-2024-11-03-pukul-14-54-09-368601e8.jpg" alt="Foto 1">
+            <p>“beta pung Cinta bukan hanya tentang perasaan, tetapi tentang kesetiaan tanpa batas.”</p>
+        </div>
+        <!-- Halaman 2 -->
+        <div class="page" id="page2">
+            <img src="https://i.ibb.co.com/y6fW57S/Gambar-Whats-App-2024-11-03-pukul-14-54-09-ce3bec4b.jpg" alt="Foto 2">
+            <p>“Setiap momen bersama syng adalah harta yang tak ternilai.”</p>
+        </div>
+        <!-- Halaman 3 -->
+        <div class="page" id="page3">
+            <img src="https://i.ibb.co.com/3SNJtxG/Gambar-Whats-App-2024-11-03-pukul-14-58-59-8f212ed1.jpg" alt="Foto 3">
+            <p>“syng adalah alasan beta pung senyum di pagi hari.”</p>
+        </div>
+        <!-- Halaman 4 -->
+        <div class="page" id="page4">
+            <img src="https://i.ibb.co.com/86qFbPq/Gambar-Whats-App-2024-11-03-pukul-16-58-00-2f3ffd86.jpg" alt="Foto 4">
+            <p>“Dalam syng pung pelukan, beta menemukan rumah.”</p>
+        </div>
+        <!-- Halaman 5 -->
+        <div class="page" id="page5">
+            <img src="https://i.ibb.co.com/BLMcVD1/Gambar-Whats-App-2024-11-03-pukul-16-58-00-44b93d4f.jpg" alt="Foto 5">
+            <p>“beta pung Cinta deng sayang par syng tumbuh dengan setiap beta pung detak jantung.”</p>
+        </div>
+
+        <!-- Navigasi -->
+        <div class="navigation-buttons">
+            <button class="button" id="prevBtn" onclick="changePage(-1)" disabled>Sebelumnya</button>
+            <button class="button" id="nextBtn" onclick="changePage(1)">Selanjutnya</button>
+        </div>
+    </div>
+
+    <script>
+        let currentPage = 1;
+        const totalPages = 5;
+
+        // Menampilkan halaman pertama
+        showPage(currentPage);
+
+        // Fungsi untuk mengubah halaman
+        function changePage(direction) {
+            currentPage += direction;
+
+            // Cek jika halaman valid
+            if (currentPage < 1) currentPage = 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+
+            showPage(currentPage);
+        }
+
+        // Fungsi untuk menampilkan halaman sesuai dengan nomor
+        function showPage(page) {
+            // Sembunyikan semua halaman
+            for (let i = 1; i <= totalPages; i++) {
+                document.getElementById('page' + i).style.display = 'none';
+            }
+
+            // Tampilkan halaman yang sesuai
+            document.getElementById('page' + page).style.display = 'flex';
+
+            // Atur status tombol
+            document.getElementById('prevBtn').disabled = (page === 1);
+            document.getElementById('nextBtn').disabled = (page === totalPages);
+        }
+    </script>
+</body>
+</html>
